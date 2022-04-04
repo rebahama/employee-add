@@ -27,9 +27,16 @@ class Employee:
         self.age=age
         self.country=country
         
+ def add_input(self):
+   
+    self.id_nr=int(input('write employ nr please'))
+    self.name=(input('write name please'))
+    self.age=int(input('write age please'))
+    self.country=(input('write country please'))
+
  def data_output(self):
     return f"You have added --- Employe-id: {self.id_nr} ---- Name: {self.name} --- Age: {self.age} --- Country: {self.country}"
 
-
-e1=Employee(333, 'Eric anderrson', 27, 'sweden')
+e1=Employee(3, "swen", 3, "swden")
+e1.add_input()
 print(e1.data_output())
