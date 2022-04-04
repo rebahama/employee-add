@@ -27,8 +27,9 @@ class Employee:
         self.age=age
         self.country=country
         
+ def data_output(self):
+    return f"You have added --- Employe-id: {self.id_nr} ---- Name: {self.name} --- Age: {self.age} --- Country: {self.country}"
 
 
-e1=Employee(33, 'Eric anderrson', 27, 'sweden')
-print(e1.age)
-print(e1.name)
+e1=Employee(333, 'Eric anderrson', 27, 'sweden')
+print(e1.data_output())
