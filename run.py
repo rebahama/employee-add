@@ -17,12 +17,9 @@ SHEET = GSPREAD_CLIENT.open('employee-add')
 # acess spreadsheet data
 employee = SHEET.worksheet('employee')
 
-
-data_employee = employee.get_all_values()
-print(data_employee)
-
-
 class Employee:
+    """ Create a class for putting an object inside with attribute variables
+    """
     def __init__(self, id_nr, name, age, country):
         self.id_nr = id_nr
         self.name = name
@@ -30,50 +27,61 @@ class Employee:
         self.country = country
         
     def add_input(self):
-   
+        """ input for storing data inside the attributes from the init function
+        """
         self.id_nr = int(input('write employ nr please'))
         self.name = input('write name please')
         self.age = int(input('write age please'))
         self.country = input('write country please')
 
     def data_output(self):
+        """ function for returning the input data that was stored
+        """
         return f"You have added --- Employe-id: {self.id_nr} ---- Name: {self.name} --- Age: {self.age} --- Country: {self.country} to the employee database"
 
     
+#create an object of the class 
 e1=Employee(0, "", 0, "")
 
 def update(data):
+    """ append data inside the worksheet named "employee"
+    """
     add_employee=SHEET.worksheet("employee")
     add_employee.append_row(data)
 
-
+# list for storing data from the spreadsheet
 empty=[]
 
 
 def add_data_spreadsheet():
- n1=1
- for i in range(0, n1):
+    """ adding the data requested from the user inside the variables in class Employee
+    """
+n1=1
+for i in range(0, n1):
     e1.id_nr=input ('add an Employee ID:')
     e1.name=input ('add a Name:')
     e1.age=input ('add an Age:')
     e1.country=input ('add a Country:')
     
-   
+   #put the variables inside the empty list
     empty.append(e1.id_nr)
     empty.append(e1.name)
     empty.append(e1.age)
     empty.append(e1.country)
     
 def request_data():
+    """ show all the data that have been saved in the spreadsheet from the user
+    """
     values=SHEET.worksheet('employee').get_all_values()
     value=SHEET.worksheet('employee').get_all_values()[0]
+    
     for x in value:
-     print(x)
+     print(x) 
+
     for x in values:
     
      print("-------------------------------------------------")
-     print(f"")
-     print(f"  {x [0]}:                   {x[1]}:") 
+     print(f"  {x [0]}:    {x[1]}:    {x[2]}:          {x[3]}") 
      print("-------------------------------------------------")
     
    
