@@ -51,11 +51,26 @@ def update(data):
 #def add_numbers():
 #num1=input('add a word')
 
+empty=[]
 
-num1=input('add a word')
-sales_data=[int(num) for num in num1]
+
+
+n1=1
+for i in range(0, n1):
+    e1.name=input('add a name')
+    e1.age=input(('add age'))
+   
+    empty.append(e1.name)
+    empty.append(e1.age)
+    
+
+
+sales_data=[str(num) for num in empty]
+
 update(sales_data)
-print(num1)
+
+print(empty)
+
 
 
 
