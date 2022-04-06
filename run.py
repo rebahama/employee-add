@@ -32,9 +32,9 @@ class Employee:
     def add_input(self):
    
         self.id_nr = int(input('write employ nr please'))
-        self.name = (input('write name please'))
+        self.name = input('write name please')
         self.age = int(input('write age please'))
-        self.country = (input('write country please'))
+        self.country = input('write country please')
 
     def data_output(self):
         return f"You have added --- Employe-id: {self.id_nr} ---- Name: {self.name} --- Age: {self.age} --- Country: {self.country} to the employee database"
@@ -43,14 +43,9 @@ class Employee:
 e1=Employee(0, "", 0, "")
 
 def update(data):
- 
- add_employee=SHEET.worksheet("employee")
- add_employee.append_row(data)
+    add_employee=SHEET.worksheet("employee")
+    add_employee.append_row(data)
 
-
-
-#def add_numbers():
-#num1=input('add a word')
 
 empty=[]
 
@@ -58,10 +53,10 @@ empty=[]
 def add_data_spreadsheet():
  n1=1
  for i in range(0, n1):
-    e1.id_nr=input('add an Employee ID')
-    e1.name=input('add a name')
-    e1.age=input('add a age')
-    e1.country=input('add a country')
+    e1.id_nr=input ('add an Employee ID:')
+    e1.name=input ('add a Name:')
+    e1.age=input ('add an Age:')
+    e1.country=input ('add a Country:')
     
    
     empty.append(e1.id_nr)
@@ -69,21 +64,25 @@ def add_data_spreadsheet():
     empty.append(e1.age)
     empty.append(e1.country)
     
-add_data_spreadsheet()
+def request_data():
+    values=SHEET.worksheet('employee').get_all_values()
+    value=SHEET.worksheet('employee').get_all_values()[0]
+    for x in value:
+     print(x)
+    for x in values:
+    
+     print("-------------------------------------------------")
+     print(f"")
+     print(f"  {x [0]}:                   {x[1]}:") 
+     print("-------------------------------------------------")
+    
+   
 
-sales_data=[str(num) for num in empty]
+
+add_data_spreadsheet()
+sales_data = [str(num) for num in empty]
 
 update(sales_data)
 print(e1.data_output())
-print(empty)
 
-
-
-
-
-#e1.add_input()
-#print(e1.data_output())
-
-
-
-
+request_data()
