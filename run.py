@@ -63,18 +63,23 @@ def add_data_spreadsheet():
     
 def request_data():
     values=SHEET.worksheet('employee').get_all_values()
-    value=SHEET.worksheet('employee').get_all_values()[0]
-    
-    for x in value:
-     print(x) 
+  
 
     for x in values:
     
-     print("-------------------------------------------------")
-     print(f"  {x [0]}:    {x[1]}:    {x[2]}:          {x[3]}") 
-     print("-------------------------------------------------")
+     print("----------------------------------------------------------------------")
+     print(f"  Employee ID:{x [0]}:    Name:{x[1]}:   Age: {x[2]}: Country:{x[3]}") 
+     print("----------------------------------------------------------------------")
     
+def add_data():
+    values=SHEET.worksheet('employee').get_all_values()
+    value=SHEET.worksheet('employee').get_all_values()[0]
    
+    for x in values[1:]:
+        new=int(x[2])
+        neeeew=new+28
+        print(neeeew)
+        
 
 
 #add_data_spreadsheet()
@@ -82,5 +87,5 @@ def request_data():
 
 #update(sales_data)
 #print(e1.data_output())
-
-request_data()
+add_data()
+#request_data()
