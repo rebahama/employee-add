@@ -27,7 +27,10 @@ class Employee:
     def data_output(self):
         print("loading................")
         print("Employe have been successfully added to the database")
-        return f"You have added --- Employe-id: {self.id_nr} ---- Salary: {self.salary}\--- Name: {self.name} --- Country: {self.country}"
+        output_msg = (f"You have added --- Employe-id:" 
+                      f"{self.id_nr} ---- Salary:{self.salary}"
+                      f"--- Name: {self.name} --- Country: {self.country}")
+        return output_msg
 
 
 e1 = Employee(0, "", 0, "")
@@ -63,9 +66,9 @@ def request_data():
 
     for x in values:
 
-        print("----------------------------------------------------------------------")
-        print(f"  Employee ID:{x [0]}:    Salary:{x[1]}:   Name: {x[2]}: Country:{x[3]}")
-        print("----------------------------------------------------------------------")
+        print("--------------------------------------------------------------")
+        print(f" Employee ID:{x [0]}.Salary:{x[1]}.Name:{x[2]}.Country:{x[3]}")
+        print("--------------------------------------------------------------")
 
 
 def add_data(data):
