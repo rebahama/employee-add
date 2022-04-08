@@ -20,21 +20,16 @@ employee = SHEET.worksheet('employee')
 
 
 class Employee:
-    def __init__(self, id_nr, name, age, country):
+    def __init__(self, id_nr, name, salary, country):
         self.id_nr = id_nr
         self.name = name
-        self.age = age
+        self.salary = salary
         self.country = country
         
-    def add_input(self):
-   
-        self.id_nr = int(input('write employ nr please'))
-        self.name = input('write name please')
-        self.age = int(input('write age please'))
-        self.country = input('write country please')
+    
 
     def data_output(self):
-        return f"You have added --- Employe-id: {self.id_nr} ---- Name: {self.name} --- Age: {self.age} --- Country: {self.country} to the employee database"
+        return f"You have added --- Employe-id: {self.id_nr} ---- Salary: {self.salary} --- Name: {self.name} --- Country: {self.country} to the employee database"
 
     
 e1=Employee(0, "", 0, "")
@@ -47,19 +42,22 @@ def update(data):
 empty=[]
 
 
-def add_data_spreadsheet():
+def add_input_spreadsheet():
  n1=1
  for i in range(0, n1):
-    e1.id_nr=input ('add an Employee ID:')
+    
+    e1.id_nr=int(input ('add an Employee ID:'))
+    e1.salary=input ('add a Salary in Us dollar:')
     e1.name=input ('add a Name:')
-    e1.age=input ('add an Age:')
     e1.country=input ('add a Country:')
     
    
     empty.append(e1.id_nr)
+    empty.append(e1.salary)
     empty.append(e1.name)
-    empty.append(e1.age)
     empty.append(e1.country)
+
+    
     
 def request_data():
     values=SHEET.worksheet('employee').get_all_values()
@@ -68,24 +66,40 @@ def request_data():
     for x in values:
     
      print("----------------------------------------------------------------------")
-     print(f"  Employee ID:{x [0]}:    Name:{x[1]}:   Age: {x[2]}: Country:{x[3]}") 
+     print(f"  Employee ID:{x [0]}:    Salary:{x[1]}:   Name: {x[2]}: Country:{x[3]}") 
      print("----------------------------------------------------------------------")
     
-def add_data():
+def add_data(data):
     values=SHEET.worksheet('employee').get_all_values()
     value=SHEET.worksheet('employee').get_all_values()[0]
-   
+    total=0
     for x in values[1:]:
-        new=int(x[2])
-        neeeew=new+28
-        print(neeeew)
-        
+         new=int(x[1])
+         neeeew=new+100
+         print(neeeew)
+         
+def validate_data(data):
+ 
+ try:
+     e1.id_nr=input()
+  
+
+ except:
+    print("you need to print a number")
+
+            
+       
+ 
+
+    
+
+add_data(3)
 
 
-#add_data_spreadsheet()
-#sales_data = [str(num) for num in empty]
+add_input_spreadsheet()
+sales_data = [str(num) for num in empty]
 
-#update(sales_data)
-#print(e1.data_output())
-add_data()
-#request_data()
+update(sales_data)
+print(e1.data_output())
+#add_data()
+request_data()
