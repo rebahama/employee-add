@@ -17,6 +17,9 @@ employee = SHEET.worksheet('employee')
 
 
 class Employee:
+    """Create a class with attributes of an object and,
+       declare the variables use the attributes for input later
+    """
     def __init__(self, id_nr, name, salary, country):
         self.id_nr = id_nr
         self.name = name
@@ -24,6 +27,8 @@ class Employee:
         self.country = country
 
     def data_output(self):
+        """ Output the asked info into the attriute variables,
+         and display the message"""
         print("loading................")
         print("Employe have been successfully added to the database")
         output_msg = (f"You have added --- Employe-id:"
@@ -32,21 +37,24 @@ class Employee:
         return output_msg
 
 
-e1 = Employee(0, "", 0, "")
+e1 = Employee(0, "", 0, "")  # initilazie object and give empty values
 
 
 def update(data):
+    """Acess the row called employee in googlespreadsheet,
+     and append the data"""
     add_employee = SHEET.worksheet("employee")
     add_employee.append_row(data)
 
 
-empty = []
+empty = []  # empty array to put spreadsheet data in
 
-num_one = 1
+num_one = 1  # variable for index
 
 
 def add_input_spreadsheet():
-
+    """Ask the user for input to put in the object variable,
+    append the data inside empty list"""
     for i in range(0, num_one):
 
         e1.id_nr = int(input('add an Employee ID:'))
@@ -61,6 +69,8 @@ def add_input_spreadsheet():
 
 
 def request_data():
+    """Retrive data from googlespreedsheet and output the requested data,
+    that has been inputed from the user"""
     values = SHEET.worksheet('employee').get_all_values()
 
     for x in values:
@@ -71,13 +81,16 @@ def request_data():
 
 
 def calculate_salary():
+    """Reterive salary data inputed from the user and append the data,
+    inside an empty list. Use sum method to calculate the sum in the list,
+    and show the sum result"""
     values = SHEET.worksheet('employee').get_all_values()
     salary_info = []
     for x in values[1:]:
         new = int(x[1])
         salary_info.append(new)
-        sum_salary=sum(salary_info)
-    print(sum_salary)
+        sum_salary = sum(salary_info)
+    print(f"The total sum of the salaries are: {sum_salary} $Dollar")
 
 
 def validate_data(data):
@@ -88,6 +101,8 @@ def validate_data(data):
 
 
 def main():
+    """Main menu where user can chose wich function to run with a number,
+    All functions runs from this function"""
     if menu_choice == 1:
         add_input_spreadsheet()
         sales_data = [str(num) for num in empty]
@@ -97,18 +112,15 @@ def main():
         request_data()
     if menu_choice == 3:
         calculate_salary()
-    
-
-
-
 
 
 menu_choice = None
 while menu_choice != 0:
     print("Choose one of the options ")
-    print("1.Add employee to database")
-    print("2.Show employee from the database")
+    print("1. Add employee to database")
+    print("2. Show employee from the database")
     print("3. Caluclate salary of the employees")
-    print("0 to exit this menu")
+    print("0. to exit this menu")
     menu_choice = int(input())
     main()
+
