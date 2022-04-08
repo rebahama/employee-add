@@ -73,7 +73,7 @@ def request_data():
     that has been inputed from the user"""
     values = SHEET.worksheet('employee').get_all_values()
 
-    for x in values:
+    for x in values[1:]:
 
         print("--------------------------------------------------------------")
         print(f" Employee ID:{x [0]}.Salary:{x[1]}.Name:{x[2]}.Country:{x[3]}")
@@ -85,12 +85,17 @@ def calculate_salary():
     inside an empty list. Use sum method to calculate the sum in the list,
     and show the sum result"""
     values = SHEET.worksheet('employee').get_all_values()
-    salary_info = []
-    for x in values[1:]:
-        new = int(x[1])
-        salary_info.append(new)
-        sum_salary = sum(salary_info)
-    print(f"The total sum of the salaries are: {sum_salary} $Dollar")
+    sum_salary = "0"
+    if sum_salary == "":
+        print("None")
+    else:
+        salary_info = []
+        for x in values[1:]:
+            new = int(x[1])
+            salary_info.append(new)
+            sum_salary = sum(salary_info)
+
+    print(f"The total sum of the salaries are: {sum_salary} $ Dollars")
 
 
 def validate_data(data):
@@ -105,8 +110,8 @@ def main():
     All functions runs from this function"""
     if menu_choice == 1:
         add_input_spreadsheet()
-        sales_data = [str(num) for num in empty]
-        update(sales_data)
+        add_data = [str(num) for num in empty]
+        update(add_data)
         print(e1.data_output())
     if menu_choice == 2:
         request_data()
@@ -123,4 +128,3 @@ while menu_choice != 0:
     print("0. to exit this menu")
     menu_choice = int(input())
     main()
-
