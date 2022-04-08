@@ -72,13 +72,10 @@ def request_data():
 
 def calculate_salary():
     values = SHEET.worksheet('employee').get_all_values()
-    value = SHEET.worksheet('employee').get_all_values()[0]
-    salary_info=[]
-    total = 0
+    salary_info = []
     for x in values[1:]:
         new = int(x[1])
         salary_info.append(new)
-        
         sum_salary=sum(salary_info)
     print(sum_salary)
 
@@ -89,7 +86,7 @@ def validate_data(data):
     except:
         print("you need to print a number")
 
-calculate_salary()
+
 def main():
     if menu_choice == 1:
         add_input_spreadsheet()
@@ -98,6 +95,9 @@ def main():
         print(e1.data_output())
     if menu_choice == 2:
         request_data()
+    if menu_choice == 3:
+        calculate_salary()
+    
 
 
 
