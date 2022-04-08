@@ -27,7 +27,7 @@ class Employee:
     def data_output(self):
         print("loading................")
         print("Employe have been successfully added to the database")
-        output_msg = (f"You have added --- Employe-id:" 
+        output_msg = (f"You have added --- Employe-id:"
                       f"{self.id_nr} ---- Salary:{self.salary}"
                       f"--- Name: {self.name} --- Country: {self.country}")
         return output_msg
@@ -43,12 +43,12 @@ def update(data):
 
 empty = []
 
-n1 = 1
+num_one = 1
 
 
 def add_input_spreadsheet():
 
-    for i in range(0, n1):
+    for i in range(0, num_one):
 
         e1.id_nr = int(input('add an Employee ID:'))
         e1.salary = input('add a Salary in Us dollar:')
@@ -76,9 +76,9 @@ def add_data(data):
     value = SHEET.worksheet('employee').get_all_values()[0]
     total = 0
     for x in values[1:]:
-            new = int(x[1])
-            neeeew = new+100
-            print(neeeew)
+        new = int(x[1])
+        neeeew = new+100
+        print(neeeew)
 
 
 def validate_data(data):
@@ -96,7 +96,10 @@ def main():
         print(e1.data_output())
     if menu_choice == 2:
         request_data()
+
+
 add_data(2)
+
 
 menu_choice = None
 while menu_choice != 0:
