@@ -111,24 +111,27 @@ def validate_data(data):
 
 def main():
     """Main menu where user can chose wich function to run with a number,
-    All functions runs from this function"""
+    All functions runs from this function, the menu loops untill 0 is pressed,
+    and the loop stops after user have added employer to googlesheet"""
+
+
+menu_choice = None
+while menu_choice != 0:
     if menu_choice == 1:
         add_input_spreadsheet()
         add_data = [str(num) for num in empty]
         update(add_data)
         print(e1.data_output())
+        break
     if menu_choice == 2:
         request_data()
     if menu_choice == 3:
         calculate_salary()
-
-
-menu_choice = None
-while menu_choice != 0:
     print("Choose one of the options ")
     print("1. Add employee to database")
     print("2. Show employee from the database")
     print("3. Caluclate salary of the employees")
     print("0. to exit this menu")
     menu_choice = int(input())
-    main()
+
+main()
