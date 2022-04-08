@@ -88,18 +88,28 @@ def validate_data(data):
     print("you need to print a number")
 
             
-       
+def main():
+     if menu_choice==1:
+      add_input_spreadsheet()
+      sales_data = [str(num) for num in empty]
+      update(sales_data)
+      print(e1.data_output())
+     if menu_choice==2:
+        request_data()
+ 
+      #add_data()     
  
 
     
 
-add_data(3)
+#add_data(3)
+menu_choice=None
+while menu_choice !=0:
+    print("1.Add employee to database")
+    print("2.Show employee added to database")
+    print("3. Caluclate salary of the employees")
+    print("0 to exit this menu")
+    menu_choice=int(input("Choose one of the options "))
+    main() 
 
-
-add_input_spreadsheet()
-sales_data = [str(num) for num in empty]
-
-update(sales_data)
-print(e1.data_output())
-#add_data()
-request_data()
+ 
