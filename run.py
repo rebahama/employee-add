@@ -1,5 +1,4 @@
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
-# Import library from google to use as api.
+""" Import library from google to use as api."""
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -71,14 +70,17 @@ def request_data():
         print("--------------------------------------------------------------")
 
 
-def add_data(data):
+def calculate_salary():
     values = SHEET.worksheet('employee').get_all_values()
     value = SHEET.worksheet('employee').get_all_values()[0]
+    salary_info=[]
     total = 0
     for x in values[1:]:
         new = int(x[1])
-        neeeew = new+100
-        print(neeeew)
+        salary_info.append(new)
+        
+        sum_salary=sum(salary_info)
+    print(sum_salary)
 
 
 def validate_data(data):
@@ -87,7 +89,7 @@ def validate_data(data):
     except:
         print("you need to print a number")
 
-
+calculate_salary()
 def main():
     if menu_choice == 1:
         add_input_spreadsheet()
@@ -98,7 +100,7 @@ def main():
         request_data()
 
 
-add_data(2)
+
 
 
 menu_choice = None
@@ -110,4 +112,3 @@ while menu_choice != 0:
     print("0 to exit this menu")
     menu_choice = int(input())
     main()
- 
