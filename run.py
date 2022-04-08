@@ -76,7 +76,11 @@ def request_data():
     for x in values[1:]:
 
         print("--------------------------------------------------------------")
-        print(f" Employee ID:{x [0]}.Salary:{x[1]}.Name:{x[2]}.Country:{x[3]}")
+        show_msg = (f" Employee ID:{x [0]}"
+                    f" --Salary:{x[1]}"
+                    f"--Name:{x[2]}"
+                    f"--Country:{x[3]}")
+        print(show_msg)
         print("--------------------------------------------------------------")
 
 
