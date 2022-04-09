@@ -33,8 +33,7 @@ class Employee:
         print("Employee have been successfully added to the database.")
         output_msg = (f"You have added -- Employe-id:"
                       f"{self.id_nr} -- Salary:{self.salary}"
-                      f" -- Name: {self.name} -- Country: {self.country} --1"
-                      f"\nEmployee adder will now exit.....")
+                      f" -- Name: {self.name} -- Country: {self.country} --")
         return output_msg
 
 
@@ -77,7 +76,7 @@ def request_data():
     for x in values[1:]:
 
         print("--------------------------------------------------------------")
-        show_msg = (f" Employee ID 2 : {x [0]}"
+        show_msg = (f" Employee ID : {x [0]}"
                     f" : Salary : {x[1]}"
                     f" : Name : {x[2]}"
                     f" : Country : {x[3]} :")
@@ -138,3 +137,4 @@ def main():
 
 
 main()
+print("Employee adder will now shutdown....")
