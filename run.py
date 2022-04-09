@@ -29,11 +29,12 @@ class Employee:
     def data_output(self):
         """ Output the asked info into the attriute variables,
          and display the message"""
-        print("loading................")
-        print("Employee have been successfully added to the database")
+        print("Loading................")
+        print("Employee have been successfully added to the database.")
         output_msg = (f"You have added -- Employe-id:"
                       f"{self.id_nr} -- Salary:{self.salary}"
-                      f"-- Name: {self.name} -- Country: {self.country}\n Employee adder will now exit.....")
+                      f" -- Name: {self.name} -- Country: {self.country} --1"
+                      f"\nEmployee adder will now exit.....")
         return output_msg
 
 
@@ -57,10 +58,10 @@ def add_input_spreadsheet():
     append the data inside empty list"""
     for i in range(0, num_one):
 
-        e1.id_nr = int(input('add an Employee ID:\n'))
-        e1.salary = input('add a Salary in Us dollar:\n')
-        e1.name = input('add a Name:\n')
-        e1.country = input('add a Country:\n')
+        e1.id_nr = int(input('Add an Employee ID:\n'))
+        e1.salary = input('Add a Salary in Us dollar:\n')
+        e1.name = input('Add a Name:\n')
+        e1.country = input('Add a Country:\n')
 
     empty.append(e1.id_nr)
     empty.append(e1.salary)
@@ -76,10 +77,10 @@ def request_data():
     for x in values[1:]:
 
         print("--------------------------------------------------------------")
-        show_msg = (f" Employee ID:{x [0]}"
-                    f" --Salary:{x[1]}"
-                    f"--Name:{x[2]}"
-                    f"--Country:{x[3]}")
+        show_msg = (f" Employee ID 2 : {x [0]}"
+                    f" : Salary : {x[1]}"
+                    f" : Name : {x[2]}"
+                    f" : Country : {x[3]} :")
         print(show_msg)
         print("--------------------------------------------------------------")
 
@@ -99,7 +100,7 @@ def calculate_salary():
             salary_info.append(new)
             sum_salary = sum(salary_info)
 
-    print(f"The total sum of the salaries are: {sum_salary} $ Dollars")
+    print(f"The salary cost is: {sum_salary} $ Dollars per month")
 
 
 def validate_data(data):
@@ -122,15 +123,17 @@ def main():
             update(add_data)
             print(e1.data_output())
             break
-        if menu_choice == 2:
+        elif menu_choice == 2:
             request_data()
-        if menu_choice == 3:
+        elif menu_choice == 3:
             calculate_salary()
-        print("Choose one of the options ")
-        print("1. Add employee to database")
-        print("2. Show employee from the database")
+        print("------------------------------------")
+        print("Welcome to Employee adder, please choose a number")
+        print("1. Add employee")
+        print("2. Show added employee")
         print("3. Caluclate salary of the employees")
-        print("0. to exit this menu")
+        print("0. Exit menu")
+        print("------------------------------------")
         menu_choice = int(input())
 
 
