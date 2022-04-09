@@ -30,10 +30,10 @@ class Employee:
         """ Output the asked info into the attriute variables,
          and display the message"""
         print("loading................")
-        print("Employe have been successfully added to the database")
-        output_msg = (f"You have added --- Employe-id:"
-                      f"{self.id_nr} ---- Salary:{self.salary}"
-                      f"--- Name: {self.name} --- Country: {self.country}")
+        print("Employee have been successfully added to the database")
+        output_msg = (f"You have added -- Employe-id:"
+                      f"{self.id_nr} -- Salary:{self.salary}"
+                      f"-- Name: {self.name} -- Country: {self.country}\n Employee adder will now exit.....")
         return output_msg
 
 
@@ -57,10 +57,10 @@ def add_input_spreadsheet():
     append the data inside empty list"""
     for i in range(0, num_one):
 
-        e1.id_nr = int(input('add an Employee ID:'))
-        e1.salary = input('add a Salary in Us dollar:')
-        e1.name = input('add a Name:')
-        e1.country = input('add a Country:')
+        e1.id_nr = int(input('add an Employee ID:\n'))
+        e1.salary = input('add a Salary in Us dollar:\n')
+        e1.name = input('add a Name:\n')
+        e1.country = input('add a Country:\n')
 
     empty.append(e1.id_nr)
     empty.append(e1.salary)
