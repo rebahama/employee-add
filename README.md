@@ -113,6 +113,19 @@ There will be 4 options to choose from.
 
  * Scroll down and click on "Deploy branch".
  
+# Source code
+* To view the source code go to repository named Employee-add.
+
+* Click on the green button texted "Gitpod".
+
+* Before running the terminal in Github type and install "pip3 install gspread google-auth" in the terminal.
+
+* Type "python3 run.py" to run the program in Github terminal.
+
+
+ The live website link from Herokou can be accessed here: [EmployeeAdder](https://employee-adder.herokuapp.com/)
+
+
 # Credits
 * The deployment terminal was used from Code institutes template: [Codeinstitute template](https://github.com/Code-Institute-Org/python-essentials-template).
 
