@@ -83,7 +83,7 @@ There will be 4 options to choose from.
 * Code passed the [Pep8Validator](http://pep8online.com/checkresult) with no errors.  
 
 # Depoyment
- This project was deployed on Heroku. With the help of Gitgub.
+ This project was deployed on Heroku. With the help of Github.
 
  Github.
  * Use the template for python provided by Code institute.
@@ -113,3 +113,8 @@ There will be 4 options to choose from.
 
  * Scroll down and click on "Deploy branch".
  
+# Credits
+* The deployment terminal was used from Code institutes template: [Codeinstitute template](https://github.com/Code-Institute-Org/python-essentials-template).
+
+* The API connection code to Google spreadsheet was taken from Code insitutes "Love Sandwich project".
+
