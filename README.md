@@ -82,3 +82,34 @@ There will be 4 options to choose from.
 
 * Code passed the [Pep8Validator](http://pep8online.com/checkresult) with no errors.  
 
+# Depoyment
+ This project was deployed on Heroku. With the help of Gitgub.
+
+ Github.
+ * Use the template for python provided by Code institute.
+
+ * In the Github terminal type "pip3 freeze > requirments.txt
+
+ * Go to the requirements.txt and copy the installed text.
+
+ * Type "pip3 install gspread google-auth" in Github terminal to install the library used for this project.
+
+ Heroku
+ * Create a new app on Heroku.
+ 
+ * Go to settings.
+
+ * Click on "config vars".
+
+ * On "Key" add the name of your json file with capital letters. In this case "CREDS"
+ 
+ * In the value field Paste the contents from the requirements.txt that you copied from Github earlier.
+
+ * Also add PORT as another key and the value of:8000
+
+ * Scroll down to "buildpacks",add python and nodejs, make sure that python is the first on the list.
+
+ * Go to "Deploy" and link your Github repository with Heroku.
+
+ * Scroll down and click on "Deploy branch".
+ 
