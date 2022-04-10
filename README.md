@@ -8,7 +8,7 @@ EmployeeAdd is a terminal program that runs on Heroku and is created with Python
 
 * I would like a structured way of adding information such as, ID-number,name,age,country and salaries to database/spreadsheet.
 
-* I want to be able retrive the information that I have added about my employees.
+* I want to be able retrive the information that I have stored about my employees.
 
 # Features
 There will be 4 options to choose from.
@@ -41,5 +41,13 @@ There will be 4 options to choose from.
 
 * ![Calculatesalary](docs/calculate-spreadsheet.png)
 
+## 0. Exit menu
+* This option will shutdown the program and will display a message to inform the user that the program is exiting.
 
+![Calculatesalary](docs/shutdown-menu.png)
+
+## Future features
+ * Allow the user to sort the names by alphabetical order.
+
+  
 
