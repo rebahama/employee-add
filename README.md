@@ -49,5 +49,36 @@ There will be 4 options to choose from.
 ## Future features
  * Allow the user to sort the names by alphabetical order.
 
+ * Allot the user to calculate the yearly cost of the employee salries
+
   
+
+# Testing
+ I have tested the program by doing the following.
+
+ * My code was tested with the PIP8 validator.
+
+ * Tested the code in Heroku.
+
+ * Tested the code in Github terminal.
+
+ # Bugs
+
+ ## Solved bugs
+ * Sometimes when I wrote the input information the spreadsheet would place the information wrong and return the wrong data like the picture below. You can see when I tried to add the 6th person the information got wrong and would go outside the rows.  
+ ![Spreadsheetbug](docs/spreadsheet-bug.png)
+
+
+* As you can se below the data on column "E" to "H" that is outside the headlines with "employe, salary,name,contry" would not display in the terminal because it was outside column "A" to "D".
+ ![Spreadsheetbug](docs/bug-terminal.png)
+
+* When the user inputted 1 on the menu the user would be able to add an employee to the sheet. and the program would loop untill 0 is pressed. That was the problem I discovered, so to solve this bug, i had to break the loop after the user had inputted the information about the employees. I put a break in the loop and finally the program worked like I had planned from the start.
+
+# Unsolved Bugs
+ * No known bugs
+
+
+# Validation of code
+
+* Code passed the [Pep8Validator](http://pep8online.com/checkresult) with no errors.  
 
