@@ -30,7 +30,6 @@ class Employee:
         """ Output the asked info into the attriute variables,
          and display the message"""
         print("Loading................")
-        print("Employee have been successfully added to the database.")
         output_msg = (f"You have added -- Employe-id:"
                       f"{self.id_nr} -- Salary:{self.salary}"
                       f" -- Name: {self.name} -- Country: {self.country} --")
@@ -54,27 +53,33 @@ num_one = 1  # variable for index
 
 def add_input_spreadsheet():
     """Ask the user for input to put in the object variable,
-    append the data inside empty list"""
+    append the data inside empty list if the wrong input is,
+    provided break the loop"""
     for i in range(0, num_one):
-
-        e1.id_nr = int(input('Add an Employee ID:\n'))
-        e1.salary = input('Add a Salary in Us dollar:\n')
-        e1.name = input('Add a Name:\n')
-        e1.country = input('Add a Country:\n')
-
-    empty.append(e1.id_nr)
-    empty.append(e1.salary)
-    empty.append(e1.name)
-    empty.append(e1.country)
+        try:
+            e1.id_nr = int(input('Add an Employee ID:\n'))
+            e1.salary = int(input('Add a Salary per month in Us dollar:\n'))
+            e1.name = input('Add a Name:\n')
+            e1.country = input('Add a Country:\n')
+            empty.append(e1.id_nr)
+            empty.append(e1.salary)
+            empty.append(e1.name)
+            empty.append(e1.country)
+            break
+        except:
+            print("Only one value and only one number is allowed")
+            print("Failed to add employee")
 
 
 def request_data():
     """Retrive data from googlespreedsheet and output the requested data,
     that has been inputed from the user"""
     values = SHEET.worksheet('employee').get_all_values()
-
+    employee_number = 0
     for x in values[1:]:
-
+        employee_number += 1  # increment the employee number and print it out
+        print(f"-------------------------Employee:{employee_number}"
+              f"-----------------------------")
         print("--------------------------------------------------------------")
         show_msg = (f" Employee ID : {x [0]}"
                     f" : Salary : {x[1]}"
@@ -98,15 +103,9 @@ def calculate_salary():
             new = int(x[1])
             salary_info.append(new)
             sum_salary = sum(salary_info)
-
-    print(f"The salary cost is: {sum_salary} $ Dollars per month")
-
-
-def validate_data(data):
-    try:
-        e1.id_nr = input()
-    except:
-        print("you need to print a number")
+    print("-----------------------------------------------------")
+    print(f"The salary cost is: {sum_salary} $ Dollars per month.")
+    print("-----------------------------------------------------")
 
 
 def main():
@@ -116,25 +115,30 @@ def main():
 
     menu_choice = None
     while menu_choice != 0:
-        if menu_choice == 1:
-            add_input_spreadsheet()
-            add_data = [str(num) for num in empty]
-            update(add_data)
-            print(e1.data_output())
-            break
-        elif menu_choice == 2:
-            request_data()
-        elif menu_choice == 3:
-            calculate_salary()
-        print("------------------------------------")
-        print("Welcome to Employee adder, please choose a number")
-        print("1. Add employee")
-        print("2. Show added employee")
-        print("3. Caluclate salary of the employees")
-        print("0. Exit menu")
-        print("------------------------------------")
-        menu_choice = int(input())
+        try:
+            if menu_choice == 1:
+                add_input_spreadsheet()
+                add_data = [str(num) for num in empty]
+                update(add_data)
+                print(e1.data_output())
+                break
+            elif menu_choice == 2:
+                request_data()
+            elif menu_choice == 3:
+                calculate_salary()
+            print("Welcome to Employee adder, type a number and press enter.")
+            print("------------------------------------")
+            print("1. Add employee")
+            print("2. Show added employee")
+            print("3. Caluclate salary of the employees")
+            print("0. Exit menu")
+            print("------------------------------------")
+            menu_choice = int(input())
+        except:
+                print("------------------------------------")
+                print("Please type a number between 1 to 3 or type 0 to exit.")
+                print("------------------------------------")
 
 
-main()
+main()  # All the functions are called from this function
 print("Employee adder will now shutdown....")
