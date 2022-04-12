@@ -122,10 +122,13 @@ def main():
                 update(add_data)
                 print(e1.data_output())
                 break
+                input('Press any key to get back to the Employee main menu\n')
             elif menu_choice == 2:
                 request_data()
+                input('Press any key to get back to the Employee main menu\n')
             elif menu_choice == 3:
                 calculate_salary()
+                input('Press any key to get back to the Employee main menu\n')
             print("Welcome to Employee adder, type a number and press enter.")
             print("------------------------------------")
             print("1. Add employee")
