@@ -30,7 +30,7 @@ class Employee:
         """ Output the asked info into the attriute variables,
          and display the message"""
         print("Loading................")
-        output_msg = (f"You have added -- Employe-id:"
+        output_msg = (f"Your input: -- Employe-id:"
                       f"{self.id_nr} -- Salary:{self.salary}"
                       f" -- Name: {self.name} -- Country: {self.country} --")
         return output_msg
@@ -52,22 +52,33 @@ empty = []  # empty list to put spreadsheet data in
 def add_input_spreadsheet():
     """Ask the user for input to put in the object variable,
     append the data inside empty list if the wrong input is,
-    provided break the loop"""
-
-    try:
-        e1.id_nr = int(input("Add an Employee ID,only numbers allowed:\n"))
-        e1.salary = int(input("Add a Salary per month in Us dollar,"
-                              "only numbers allowed:\n"))
-        e1.name = input("Add a Name:\n")
-        e1.country = input("Add a Country:\n")
-        empty.append(e1.id_nr)
-        empty.append(e1.salary)
-        empty.append(e1.name)
-        empty.append(e1.country)
-    except:
-        print("Only one value and only one number is allowed")
-        print("WARNING...Failed to add employee,please"
-              " try again with the right values.")
+    provided break the loop if values below 0 is inputted break the loop"""
+    num_one = 1
+    for i in range(0, num_one):
+        try:
+            e1.id_nr = int(input("Add an Employee ID,only"
+                                 " numbers above 0 is allowed:\n"))
+            if e1.id_nr < 0:
+                print("Please type a value above 0")
+                print("WARNING..failed to add employee")
+                break
+            e1.salary = int(input("Add a Salary per month in Us dollar,"
+                                  "only numbers above 0 is allowed:\n"))
+            if e1.salary < 0:
+                print("Please type a value above 0")
+                print("WARNING..failed to add employee")
+                break
+            e1.name = input("Add a Name:\n")
+            e1.country = input("Add a Country:\n")
+            empty.append(e1.id_nr)
+            empty.append(e1.salary)
+            empty.append(e1.name)
+            empty.append(e1.country)
+            break
+        except:
+            print("Only one value and only one number is allowed")
+            print("WARNING...Failed to add employee,please"
+                  " try again with the right values.")
 
 
 def request_data():
