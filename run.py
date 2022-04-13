@@ -48,7 +48,7 @@ def update(data):
     add_employee.append_row(data)
 
 
-empty = []  # empty list to put spreadsheet data in
+empty_list = []  # empty list to put spreadsheet data in
 
 
 def add_input_spreadsheet():
@@ -61,22 +61,36 @@ def add_input_spreadsheet():
             e1.id_nr = int(input("Add an Employee ID,only"
                                  " numbers above 0 is allowed:\n"))
             if e1.id_nr < 0:
+                print("------------------------------------")
                 print("Please type a value above 0")
+                print("------------------------------------")
                 print("WARNING..failed to add employee")
+                print("------------------------------------")
                 break
-            detect_values()
-            e1.salary = int(input("Add a Salary per month in Us dollar,"
-                                  "only numbers above 0 is allowed:\n"))
+            if e1.id_nr > 0:
+                detect_values(e1.id_nr)
+                print("WARNING...if 0 is pressed employee will not"
+                      " be added to the system.\n")
+                answer = int(input("Press 0 to cancel and exit,"
+                                   "or press any other number to continue:\n"))
+                if answer == 0:
+                    break
+                else:
+                    print("------------------------------------")
+                    e1.salary = int(input("Add a Salary per month in Us"
+                                          " dollars, only numbers above"
+                                          " 0 is allowed:\n"))
+                    print("------------------------------------")
             if e1.salary < 0:
-                print("Please type a value above 0")
-                print("WARNING..failed to add employee")
+                print("Please type a value above 0\n")
+                print("WARNING..failed to add employee\n")
                 break
             e1.name = input("Add a Name:\n")
             e1.country = input("Add a Country:\n")
-            empty.append(e1.id_nr)
-            empty.append(e1.salary)
-            empty.append(e1.name)
-            empty.append(e1.country)
+            empty_list.append(e1.id_nr)
+            empty_list.append(e1.salary)
+            empty_list.append(e1.name)
+            empty_list.append(e1.country)
             break
         except:
             print("Only one value and only one number is allowed")
@@ -102,17 +116,24 @@ def request_data():
         print("--------------------------------------------------------------")
 
 
-def detect_values():
+def detect_values(id_validate):
+    """ Function that looks in the googlespreadsheet aftet the row,
+        "Employee-id, checks all the values and compares it with
+         the input to display a message if a value exist or not
+    """
     values = SHEET.worksheet('employee').get_all_values()
     find_id = []
-    for value in values [1:]:
+    for value in values[1:]:
         detect_id = int(value[0])
         find_id.append(detect_id)
-    if (e1.id_nr in find_id):
-        print("The number you provided alredy exist,please type a diffrent number")
-        
+    if id_validate in find_id:
+        print("------------------------------------")
+        print("WARNING...The employee-Id-you provided alredy exist")
+        print("------------------------------------")
     else:
-        print("Element does not exist")
+        print("------------------------------------")
+        print("The employee-id is avalible")
+        print("------------------------------------")
 
 
 def calculate_salary():
@@ -144,19 +165,20 @@ def main():
         try:
             if menu_choice == 1:
                 add_input_spreadsheet()
-                add_data = [str(num) for num in empty]
+                add_data = [str(num) for num in empty_list]
                 update(add_data)
                 print(e1.data_output())
                 break
             elif menu_choice == 2:
                 request_data()
-                input('Press any key to get back to the Employee main menu\n')
+                print("------------------------------------")
+                input("Press any key to get back to the Employee main menu\n")
+                print("------------------------------------")
             elif menu_choice == 3:
                 calculate_salary()
-                input('Press any key to get back to the Employee main menu\n')
-            elif menu_choice == 4:
-                detect_values()
-                input('Press any key to get back to the Employee main menu\n')
+                print("------------------------------------")
+                input("Press any key to get back to the Employee main menu\n")
+                print("------------------------------------")
             print("Welcome to Employee adder, type a number and press enter.")
             print("------------------------------------")
             print("1. Add employee")
@@ -169,7 +191,7 @@ def main():
             print("------------------------------------")
             print("Please type a number between 1 to 3 in the main",
                   " menu or type 0 to exit.")
-            input('Press any key to get back to the last menu\n')
+            input("Press any key to get back to the last menu\n")
             print("------------------------------------")
 
 
