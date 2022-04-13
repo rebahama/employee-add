@@ -57,10 +57,11 @@ def add_input_spreadsheet():
     provided break the loop"""
     for i in range(0, num_one):
         try:
-            e1.id_nr = int(input('Add an Employee ID:\n'))
-            e1.salary = int(input('Add a Salary per month in Us dollar:\n'))
-            e1.name = input('Add a Name:\n')
-            e1.country = input('Add a Country:\n')
+            e1.id_nr = int(input("Add an Employee ID,only numbers allowed:\n"))
+            e1.salary = int(input("Add a Salary per month in Us dollar,"
+                                  "only numbers allowed:\n"))
+            e1.name = input("Add a Name:\n")
+            e1.country = input("Add a Country:\n")
             empty.append(e1.id_nr)
             empty.append(e1.salary)
             empty.append(e1.name)
@@ -68,7 +69,8 @@ def add_input_spreadsheet():
             break
         except:
             print("Only one value and only one number is allowed")
-            print("Failed to add employee")
+            print("WARNING...Failed to add employee,please"
+                  " try again with the right values.")
 
 
 def request_data():
@@ -122,7 +124,6 @@ def main():
                 update(add_data)
                 print(e1.data_output())
                 break
-                input('Press any key to get back to the Employee main menu\n')
             elif menu_choice == 2:
                 request_data()
                 input('Press any key to get back to the Employee main menu\n')
@@ -139,7 +140,9 @@ def main():
             menu_choice = int(input())
         except:
                 print("------------------------------------")
-                print("Please type a number between 1 to 3 or type 0 to exit.")
+                print("Please type a number between 1 to 3 in the main",
+                      " menu or type 0 to exit.")
+                input('Press any key to get back to the last menu\n')
                 print("------------------------------------")
 
 
