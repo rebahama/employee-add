@@ -48,29 +48,26 @@ def update(data):
 
 empty = []  # empty list to put spreadsheet data in
 
-num_one = 1  # variable for index
-
 
 def add_input_spreadsheet():
     """Ask the user for input to put in the object variable,
     append the data inside empty list if the wrong input is,
     provided break the loop"""
-    for i in range(0, num_one):
-        try:
-            e1.id_nr = int(input("Add an Employee ID,only numbers allowed:\n"))
-            e1.salary = int(input("Add a Salary per month in Us dollar,"
-                                  "only numbers allowed:\n"))
-            e1.name = input("Add a Name:\n")
-            e1.country = input("Add a Country:\n")
-            empty.append(e1.id_nr)
-            empty.append(e1.salary)
-            empty.append(e1.name)
-            empty.append(e1.country)
-            break
-        except:
-            print("Only one value and only one number is allowed")
-            print("WARNING...Failed to add employee,please"
-                  " try again with the right values.")
+
+    try:
+        e1.id_nr = int(input("Add an Employee ID,only numbers allowed:\n"))
+        e1.salary = int(input("Add a Salary per month in Us dollar,"
+                              "only numbers allowed:\n"))
+        e1.name = input("Add a Name:\n")
+        e1.country = input("Add a Country:\n")
+        empty.append(e1.id_nr)
+        empty.append(e1.salary)
+        empty.append(e1.name)
+        empty.append(e1.country)
+    except:
+        print("Only one value and only one number is allowed")
+        print("WARNING...Failed to add employee,please"
+              " try again with the right values.")
 
 
 def request_data():
@@ -78,15 +75,15 @@ def request_data():
     that has been inputed from the user"""
     values = SHEET.worksheet('employee').get_all_values()
     employee_number = 0
-    for x in values[1:]:
+    for value in values[1:]:
         employee_number += 1  # increment the employee number and print it out
         print(f"-------------------------Employee:{employee_number}"
               f"-----------------------------")
         print("--------------------------------------------------------------")
-        show_msg = (f" Employee ID : {x [0]}"
-                    f" : Salary : {x[1]}"
-                    f" : Name : {x[2]}"
-                    f" : Country : {x[3]} :")
+        show_msg = (f" Employee ID : {value [0]}"
+                    f" : Salary : {value[1]}"
+                    f" : Name : {value[2]}"
+                    f" : Country : {value[3]} :")
         print(show_msg)
         print("--------------------------------------------------------------")
 
@@ -101,8 +98,8 @@ def calculate_salary():
         print("None")
     else:
         salary_info = []
-        for x in values[1:]:
-            new = int(x[1])
+        for value in values[1:]:
+            new = int(value[1])
             salary_info.append(new)
             sum_salary = sum(salary_info)
     print("-----------------------------------------------------")
@@ -139,12 +136,13 @@ def main():
             print("------------------------------------")
             menu_choice = int(input())
         except:
-                print("------------------------------------")
-                print("Please type a number between 1 to 3 in the main",
-                      " menu or type 0 to exit.")
-                input('Press any key to get back to the last menu\n')
-                print("------------------------------------")
+            print("------------------------------------")
+            print("Please type a number between 1 to 3 in the main",
+                  " menu or type 0 to exit.")
+            input('Press any key to get back to the last menu\n')
+            print("------------------------------------")
 
 
-main()  # All the functions are called from this function
-print("Employee adder will now shutdown....")
+if __name__ == '__main__':
+    main()  # All the functions are called from this function
+    print("Employee adder will now shutdown....")
