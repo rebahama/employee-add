@@ -1,4 +1,4 @@
-""" Import library from google to use as api."""
+""" Import library from google to use as api. Code from Code institute"""
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -15,6 +15,8 @@ SHEET = GSPREAD_CLIENT.open('employee-add')
 # acess spreadsheet data
 employee = SHEET.worksheet('employee')
 
+# My own code starts here.
+
 
 class Employee:
     """Create a class with attributes of an object and,
@@ -30,13 +32,13 @@ class Employee:
         """ Output the asked info into the attriute variables,
          and display the message"""
         print("Loading................")
-        output_msg = (f"Your input: -- Employe-id:"
+        output_msg = (f"Your input: -- Employee-id:"
                       f"{self.id_nr} -- Salary:{self.salary}"
                       f" -- Name: {self.name} -- Country: {self.country} --")
         return output_msg
 
 
-e1 = Employee(0, "", 0, "")  # initilazie object and give empty values
+e1 = Employee(0, "", 0, "")  # Provide default values.
 
 
 def update(data):
@@ -62,6 +64,7 @@ def add_input_spreadsheet():
                 print("Please type a value above 0")
                 print("WARNING..failed to add employee")
                 break
+            detect_values()
             e1.salary = int(input("Add a Salary per month in Us dollar,"
                                   "only numbers above 0 is allowed:\n"))
             if e1.salary < 0:
@@ -99,6 +102,19 @@ def request_data():
         print("--------------------------------------------------------------")
 
 
+def detect_values():
+    values = SHEET.worksheet('employee').get_all_values()
+    find_id = []
+    for value in values [1:]:
+        detect_id = int(value[0])
+        find_id.append(detect_id)
+    if (e1.id_nr in find_id):
+        print("The number you provided alredy exist,please type a diffrent number")
+        
+    else:
+        print("Element does not exist")
+
+
 def calculate_salary():
     """Reterive salary data inputed from the user and append the data,
     inside an empty list. Use sum method to calculate the sum in the list,
@@ -114,14 +130,14 @@ def calculate_salary():
             salary_info.append(new)
             sum_salary = sum(salary_info)
     print("-----------------------------------------------------")
-    print(f"The salary cost is: {sum_salary} $ Dollars per month.")
+    print(f"The total salary cost is: {sum_salary} $ Dollars per month.")
     print("-----------------------------------------------------")
 
 
 def main():
-    """Main menu where user can choose wich function to run with a number,
+    """Main menu where user can choose what function to run with a number,
     All functions runs from this function, the menu loops untill 0 is pressed,
-    and the loop stops after user have added employer to googlesheet"""
+    and the loop stops after user have added employee to googlesheet"""
 
     menu_choice = None
     while menu_choice != 0:
@@ -137,6 +153,9 @@ def main():
                 input('Press any key to get back to the Employee main menu\n')
             elif menu_choice == 3:
                 calculate_salary()
+                input('Press any key to get back to the Employee main menu\n')
+            elif menu_choice == 4:
+                detect_values()
                 input('Press any key to get back to the Employee main menu\n')
             print("Welcome to Employee adder, type a number and press enter.")
             print("------------------------------------")
