@@ -104,6 +104,11 @@ Technology used:
  * When the user is asked to input employee-id and if the wrong input is provided the program will display an error as seen in the picture below, a letter "s" have been input instead of a number and the program will also display that it failed to add the employee to the spreadsheet. This message will appear if the user have inputted any other value than a whole number or a number below zero. This error message will also be displayed if the user provides the wrong values when asked in the "salary" input.
 
    ![Errorinput2](docs/error-message-2.png)
+ 
+ * If the "salary" row in the spreadsheet data is empty and the user inputs 2 in the main menu to calculate salaries, then a message will display that the cost is 0 dollars per month
+
+   ![Emptysalary](docs/empty-spreadsheet.png)
+
 
 
  # Bugs
