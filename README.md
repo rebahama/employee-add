@@ -27,7 +27,7 @@ There will be 4 options to choose from.
 * ![Spreadsheet](docs/add-employee-spreadsheet.png)
 
 ## If employee-id alredy exist
-* If the user inputs an employee-id that alredy exist in the spreadsheet then a message will appear and warn the user that the value alredy is in the spreadsheet. The user will have 2 choiches here. Either continue and add further data or press 0 and shutdown the program.
+* If the user inputs an employee-id that alredy exist in the spreadsheet then a message will appear and warn the user that the value alredy is in the spreadsheet. The user will have 2 choiches here. Either continue and add further data or press 0 and shutdown the program. The user will still be able to add an employee id even if it alredy is in the spreadsheet, the funcionliaty here is that the program will let the user know if that value exist and give the user the choice to either exit and cancel to start over, or continue and add further data. This is to not restrict the user and give as much freedom as possbile so the user can choose what action to take.
 
    ![Errorinput3](docs/error-message-3.png)
 
