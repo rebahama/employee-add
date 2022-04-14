@@ -72,7 +72,7 @@ def add_input_spreadsheet():
        not exist a message will display and telling
        the user that the value is available.
        """
-    num_one = 1
+    num_one = 1  # used for index in forloop
     for i in range(0, num_one):
         try:
             e1.id_nr = int(input("Add an Employee ID,only"
@@ -120,9 +120,9 @@ def request_data():
        jump over the first row in the list to not display
        with the value [1: in the loop]. Increment the employee
        _number everytime an employee has been added to the list.
-       Display in a strin literal all the values that has been,
+       Display in a string literal all the values that has been,
        added to the google spreadsheet.
-       and put the data in to varible called """
+       and put the data in to a variable called show_msg """
     values = SHEET.worksheet('employee').get_all_values()
     employee_number = 0
     for value in values[1:]:
@@ -139,7 +139,7 @@ def request_data():
 
 
 def detect_values(id_validate):
-    """ Function that one argument and takes value
+    """ Function that takes one argument and takes value
         from the googlespreadsheet
         in the "emloyee-id" row, takes that value and appends it
         in a list called find_id. Checks if the input argument
@@ -150,11 +150,11 @@ def detect_values(id_validate):
 
     """
     values = SHEET.worksheet('employee').get_all_values()
-    find_id = []
+    find_id = []  # empty list to put employee-id in from googlespreadsheet
     for value in values[1:]:
         detect_id = int(value[0])
         find_id.append(detect_id)
-    if id_validate in find_id:
+    if id_validate in find_id:  # Look if employee id alredy exist.
         print("------------------------------------")
         print("WARNING...The employee-Id-you provided alredy exist")
         print("------------------------------------")
@@ -197,7 +197,7 @@ def main():
     a whole number."""
 
     menu_choice = None
-    while menu_choice != 0:
+    while menu_choice != 0:  # All the functions called with a number input.
         try:
             if menu_choice == 1:
                 add_input_spreadsheet()
