@@ -20,7 +20,7 @@ employee = SHEET.worksheet('employee')
 
 class Employee:
     """Create a class with attributes of an object and,
-       declare the variables use the attributes for input later
+       declare the variables use the attributes for input later.
     """
     def __init__(self, id_nr, name, salary, country):
         self.id_nr = id_nr
@@ -29,8 +29,10 @@ class Employee:
         self.country = country
 
     def data_output(self):
-        """ Output the asked info into the attriute variables,
-         and display the message"""
+        """ Output and display message when the user have added
+            the input into the class variables and returning all
+            the inputed values.
+        """
         print("Loading................")
         output_msg = (f"Your input: -- Employee-id:"
                       f"{self.id_nr} -- Salary:{self.salary}"
@@ -43,7 +45,7 @@ e1 = Employee(0, "", 0, "")  # Provide default values.
 
 def update(data):
     """Acess the row called employee in googlespreadsheet,
-     and append the data"""
+     and append the data into the function called"""
     add_employee = SHEET.worksheet("employee")
     add_employee.append_row(data)
 
@@ -52,9 +54,24 @@ empty_list = []  # empty list to put spreadsheet data in
 
 
 def add_input_spreadsheet():
-    """Ask the user for input to put in the object variable,
-    append the data inside empty list if the wrong input is,
-    provided break the loop if values below 0 is inputted break the loop"""
+    """Ask the user for input if the value is below zero for employee-id input
+       and below 0 for salary input then a message will show up
+       to break the loopand display a message telling the
+       user that it failed to add input. If anything
+       than a whole number is inputed in the employe and salary input
+       by the user an exepection will occur and display a message
+       telling the user to
+       put in the right values.
+
+       The input data from the user will be appended to a empty list
+       called empty_list.
+       If the values in Employee id alredy exist in the
+       googlespreadsheet a message.
+       will display informing the user that the value
+       alredy exist,if the value does
+       not exist a message will display and telling
+       the user that the value is available.
+       """
     num_one = 1
     for i in range(0, num_one):
         try:
@@ -92,15 +109,20 @@ def add_input_spreadsheet():
             empty_list.append(e1.name)
             empty_list.append(e1.country)
             break
-        except:
-            print("Only one value and only one number is allowed")
+        except ValueError:
+            print("Only one whole number is allowed, example: 2,3,4,5")
             print("WARNING...Failed to add employee,please"
                   " try again with the right values.")
 
 
 def request_data():
-    """Retrive data from googlespreedsheet and output the requested data,
-    that has been inputed from the user"""
+    """Retrive data from googlespreedsheet, in a foor loop.
+       jump over the first row in the list to not display
+       with the value [1: in the loop]. Increment the employee
+       _number everytime an employee has been added to the list.
+       Display in a strin literal all the values that has been,
+       added to the google spreadsheet.
+       and put the data in to varible called """
     values = SHEET.worksheet('employee').get_all_values()
     employee_number = 0
     for value in values[1:]:
@@ -117,9 +139,15 @@ def request_data():
 
 
 def detect_values(id_validate):
-    """ Function that looks in the googlespreadsheet aftet the row,
-        "Employee-id, checks all the values and compares it with
-         the input to display a message if a value exist or not
+    """ Function that one argument and takes value
+        from the googlespreadsheet
+        in the "emloyee-id" row, takes that value and appends it
+        in a list called find_id. Checks if the input argument
+        matches with the value inside employee-id row, if the value
+        exist then print a warning message informing the user
+        that the value exist. if the value does not exist
+        then inform the user that the value dont exist.
+
     """
     values = SHEET.worksheet('employee').get_all_values()
     find_id = []
@@ -137,9 +165,13 @@ def detect_values(id_validate):
 
 
 def calculate_salary():
-    """Reterive salary data inputed from the user and append the data,
-    inside an empty list. Use sum method to calculate the sum in the list,
-    and show the sum result"""
+    """Retrive the row called salary in the googlespreadsheet
+    with the variable "values". If the salary is empty in the
+    spreadsheet, then display message showing that the total
+    cost is "0". Append the values variable inside a empty list.
+     convert the values to integers and use method called "sum"
+     to sum the values inside the list. After the caluclation
+     has been executed display the total cost in a string literal."""
     values = SHEET.worksheet('employee').get_all_values()
     sum_salary = "0"
     if sum_salary == "":
@@ -158,7 +190,11 @@ def calculate_salary():
 def main():
     """Main menu where user can choose what function to run with a number,
     All functions runs from this function, the menu loops untill 0 is pressed,
-    and the loop stops after user have added employee to googlesheet"""
+    and the loop stops after user have added
+    employee to googlesheet,if user inputs
+    value below "0" a message will display or
+    if a user inputs anything other than
+    a whole number."""
 
     menu_choice = None
     while menu_choice != 0:
@@ -187,7 +223,10 @@ def main():
             print("0. Exit menu")
             print("------------------------------------")
             menu_choice = int(input())
-        except:
+            if menu_choice < 0:
+                print("please type a number above 0\n")
+                input("Press any key to get back to the Employee main menu\n")
+        except ValueError:
             print("------------------------------------")
             print("Please type a number between 1 to 3 in the main",
                   " menu or type 0 to exit.")
@@ -198,4 +237,3 @@ def main():
 if __name__ == '__main__':
     main()  # All the functions are called from this function
     print("Employee adder will now shutdown....")
-
